@@ -1,2 +1,5 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<% @products.each do |product| %>
+	<h1>Name: <%= product[:name] %></h1>
+	<p> Description: <%= product[:description] %></p>
+	<p> Price $<%= product.formatted_price %></p>
+<% end %>

@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
 
   def show
   	@product = Product.find(params[:id])
+  	
 
   	respond_to do |format|
   		format.html
@@ -27,7 +28,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(params[:product])
+    @product = Product.new(product_param)
 
     respond_to do |format|
       if @product.save
@@ -68,5 +69,10 @@ class ProductsController < ApplicationController
     end
   end
 
+private
+
+def product_param
+	params.require(:product).permit(:name, :description, :price_in_cents)
+end
 
 end
